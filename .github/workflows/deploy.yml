@@ -1,0 +1,35 @@
+name: Deploy UI Preview
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy-preview:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Deploy via SSH
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          script: |
+            mkdir -p ~/apps/ios-cleanup-pro/preview
+            cd ~/apps/ios-cleanup-pro/preview
+            if [ ! -d ".git" ]; then
+              git clone https://github.com/ericlinyi1/ios-cleanup-pro.git .
+            else
+              git fetch origin main
+              git reset --hard origin/main
+            fi
+            
+            # 端口清障 8082
+            sudo fuser -k 8082/tcp || true
+            
+            cd preview-web
+            docker compose up -d --build --force-recreate
