@@ -2,51 +2,28 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>iOS Cleanup Pro - UI Preview System</title>
+    <title>iOS Cleanup Pro - Swipe Preview</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        .iphone-frame {
-            width: 375px;
-            height: 812px;
-            border: 12px solid #333;
-            border-radius: 40px;
-            position: relative;
-            background: #fff;
-            overflow: hidden;
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
-        }
-        .ios-status-bar { height: 44px; display: flex; justify-content: space-between; padding: 0 30px; align-items: center; font-size: 14px; font-weight: bold; }
+        .iphone-frame { width: 375px; height: 812px; border: 12px solid #333; border-radius: 40px; background: #fff; overflow: hidden; box-shadow: 0 25px 50px rgba(0,0,0,0.5); }
+        .card { width: 300px; height: 500px; border-radius: 20px; background: #f3f4f6; border: 2px solid #000; box-shadow: 10px 10px 0px #000; transition: transform 0.3s; cursor: grab; }
+        .swipe-left { transform: translateX(-150px) rotate(-15deg); opacity: 0; }
+        .swipe-right { transform: translateX(150px) rotate(15deg); opacity: 0; }
     </style>
 </head>
 <body class="bg-gray-100 flex items-center justify-center min-h-screen">
-    <div class="iphone-frame">
-        <!-- iOS Status Bar Mock -->
-        <div class="ios-status-bar">
-            <span>9:41</span>
-            <div class="flex space-x-1">📶 🔋</div>
-        </div>
-        
-        <!-- App Content Area -->
-        <div id="app-root" class="p-6 flex flex-col h-full">
-            <h1 class="text-3xl font-bold mt-10 mb-4">Welcome to Cleanup Pro</h1>
-            <p class="text-gray-500 mb-12">Smart storage management powered by AI.</p>
-            
-            <div class="space-y-6 flex-grow">
-                <div class="flex items-center space-x-4 p-4 bg-blue-50 rounded-2xl">
-                    <span class="text-2xl">🖼️</span>
-                    <div>
-                        <h3 class="font-semibold">Photo Library</h3>
-                        <p class="text-sm text-gray-500">Access required to find duplicates.</p>
-                    </div>
-                </div>
+    <div class="iphone-frame p-6 flex flex-col items-center">
+        <div class="flex justify-between w-full mb-10 font-bold"><span>9:41</span><span>📶 🔋</span></div>
+        <h2 class="text-2xl font-bold mb-6">Review Photos</h2>
+        <div id="swipe-card" class="card flex flex-col items-center justify-center">
+            <span class="text-5xl mb-4">🖼️</span>
+            <p class="font-bold">IMG_4829.JPG</p>
+            <div class="mt-20 flex space-x-10">
+                <span class="text-red-500 font-bold">⬅️ DELETE</span>
+                <span class="text-green-500 font-bold">KEEP ➡️</span>
             </div>
-
-            <button class="bg-blue-600 text-white py-4 rounded-2xl font-bold text-lg mb-10 shadow-lg active:scale-95 transition-transform">
-                Get Started
-            </button>
         </div>
+        <p class="mt-10 text-gray-400 text-sm">Swipe left to delete, right to keep</p>
     </div>
 </body>
 </html>
-<!-- Triggering Deployment with New Secrets -->
-<!-- Retry Deployment with Verified Secrets -->
