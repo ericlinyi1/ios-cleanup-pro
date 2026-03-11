@@ -1,5 +1,7 @@
 import Photos
+#if canImport(UIKit)
 import UIKit
+#endif
 
 /// Album and collection management module
 /// Implements Issue #5: Move to Custom Collections & Album Management

@@ -1,5 +1,7 @@
 import Photos
+#if canImport(UIKit)
 import UIKit
+#endif
 
 /// Screenshot detection and bulk management module
 /// Implements Issue #4: Bulk Screenshot Identification & Cleanup

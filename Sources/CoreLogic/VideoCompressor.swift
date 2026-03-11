@@ -1,6 +1,10 @@
 import Photos
 import AVFoundation
+#if canImport(UIKit)
 import UIKit
+#elseif canImport(AppKit)
+import AppKit
+#endif
 
 /// Large video detection and HEVC compression module
 /// Implements Issue #6 & #7: Large Video Detection & HEVC Compression
