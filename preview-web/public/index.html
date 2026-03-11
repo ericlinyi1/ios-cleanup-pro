@@ -2,28 +2,303 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>iOS Cleanup Pro - Swipe Preview</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>iOS Cleanup Pro - Full Feature Preview</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        .iphone-frame { width: 375px; height: 812px; border: 12px solid #333; border-radius: 40px; background: #fff; overflow: hidden; box-shadow: 0 25px 50px rgba(0,0,0,0.5); }
-        .card { width: 300px; height: 500px; border-radius: 20px; background: #f3f4f6; border: 2px solid #000; box-shadow: 10px 10px 0px #000; transition: transform 0.3s; cursor: grab; }
-        .swipe-left { transform: translateX(-150px) rotate(-15deg); opacity: 0; }
-        .swipe-right { transform: translateX(150px) rotate(15deg); opacity: 0; }
+        .iphone-frame { 
+            width: 390px; 
+            height: 844px; 
+            border: 14px solid #1f2937; 
+            border-radius: 42px; 
+            background: #000; 
+            overflow: hidden; 
+            box-shadow: 0 25px 50px rgba(0,0,0,0.6); 
+            position: relative;
+        }
+        .notch {
+            width: 140px;
+            height: 28px;
+            background: #000;
+            border-radius: 0 0 20px 20px;
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 10;
+        }
+        .screen {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            overflow-y: auto;
+        }
+        .card { 
+            background: white;
+            border-radius: 16px;
+            padding: 20px;
+            margin: 10px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        .tab-active {
+            background: white;
+            color: #667eea;
+            font-weight: bold;
+        }
+        .badge {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background: #ef4444;
+            color: white;
+            border-radius: 50%;
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: bold;
+        }
     </style>
 </head>
-<body class="bg-gray-100 flex items-center justify-center min-h-screen">
-    <div class="iphone-frame p-6 flex flex-col items-center">
-        <div class="flex justify-between w-full mb-10 font-bold"><span>9:41</span><span>📶 🔋</span></div>
-        <h2 class="text-2xl font-bold mb-6">Review Photos</h2>
-        <div id="swipe-card" class="card flex flex-col items-center justify-center">
-            <span class="text-5xl mb-4">🖼️</span>
-            <p class="font-bold">IMG_4829.JPG</p>
-            <div class="mt-20 flex space-x-10">
-                <span class="text-red-500 font-bold">⬅️ DELETE</span>
-                <span class="text-green-500 font-bold">KEEP ➡️</span>
+<body class="bg-gray-900 flex items-center justify-center min-h-screen p-8">
+    <div class="iphone-frame">
+        <div class="notch"></div>
+        <div class="screen">
+            <!-- Status Bar -->
+            <div class="flex justify-between items-center px-6 pt-10 pb-4 text-white">
+                <span class="text-sm font-semibold">9:41</span>
+                <span class="text-sm">📶 📡 🔋</span>
+            </div>
+            
+            <!-- App Title -->
+            <div class="px-6 pb-4">
+                <h1 class="text-3xl font-bold text-white mb-2">iOS Cleanup Pro</h1>
+                <p class="text-gray-300 text-sm">智能照片整理助手</p>
+            </div>
+            
+            <!-- Tab Navigation -->
+            <div class="flex space-x-2 px-6 pb-4">
+                <button class="tab-active px-4 py-2 rounded-full text-sm" onclick="showTab('home')">首页</button>
+                <button class="px-4 py-2 rounded-full text-sm text-white" onclick="showTab('screenshots')">截图</button>
+                <button class="px-4 py-2 rounded-full text-sm text-white" onclick="showTab('videos')">视频</button>
+            </div>
+            
+            <!-- Home Tab Content -->
+            <div id="home-tab" class="pb-20">
+                <!-- Storage Overview -->
+                <div class="card">
+                    <div class="flex justify-between items-center mb-4">
+                        <h3 class="text-lg font-bold">存储空间</h3>
+                        <span class="text-2xl">💾</span>
+                    </div>
+                    <div class="bg-gray-200 h-3 rounded-full overflow-hidden">
+                        <div class="bg-gradient-to-r from-purple-500 to-pink-500 h-full" style="width: 68%"></div>
+                    </div>
+                    <p class="text-sm text-gray-600 mt-2">已使用 34.2 GB / 共 50 GB</p>
+                </div>
+                
+                <!-- Feature Cards -->
+                <div class="card">
+                    <div class="flex items-center justify-between mb-3">
+                        <div class="flex items-center">
+                            <span class="text-3xl mr-3">🖼️</span>
+                            <div>
+                                <h4 class="font-bold">重复照片检测</h4>
+                                <p class="text-xs text-gray-500">已完成 ✅</p>
+                            </div>
+                        </div>
+                        <div class="relative">
+                            <span class="text-purple-600 font-bold">127张</span>
+                            <div class="badge">!</div>
+                        </div>
+                    </div>
+                    <p class="text-sm text-gray-600">发现127张重复照片，可释放 2.3 GB</p>
+                </div>
+                
+                <div class="card">
+                    <div class="flex items-center justify-between mb-3">
+                        <div class="flex items-center">
+                            <span class="text-3xl mr-3">🔍</span>
+                            <div>
+                                <h4 class="font-bold">相似照片聚类</h4>
+                                <p class="text-xs text-gray-500">AI驱动 ✅</p>
+                            </div>
+                        </div>
+                        <span class="text-purple-600 font-bold">43组</span>
+                    </div>
+                    <p class="text-sm text-gray-600">智能识别连拍和相似场景</p>
+                </div>
+                
+                <div class="card">
+                    <div class="flex items-center justify-between mb-3">
+                        <div class="flex items-center">
+                            <span class="text-3xl mr-3">📸</span>
+                            <div>
+                                <h4 class="font-bold">截图清理</h4>
+                                <p class="text-xs text-gray-500">新功能 🆕</p>
+                            </div>
+                        </div>
+                        <div class="relative">
+                            <span class="text-purple-600 font-bold">289张</span>
+                            <div class="badge">!</div>
+                        </div>
+                    </div>
+                    <p class="text-sm text-gray-600">自动识别所有截图，一键清理</p>
+                </div>
+                
+                <div class="card">
+                    <div class="flex items-center justify-between mb-3">
+                        <div class="flex items-center">
+                            <span class="text-3xl mr-3">📁</span>
+                            <div>
+                                <h4 class="font-bold">相册管理</h4>
+                                <p class="text-xs text-gray-500">新功能 🆕</p>
+                            </div>
+                        </div>
+                        <span class="text-purple-600 font-bold">12个</span>
+                    </div>
+                    <p class="text-sm text-gray-600">创建自定义相册，批量移动照片</p>
+                </div>
+                
+                <div class="card">
+                    <div class="flex items-center justify-between mb-3">
+                        <div class="flex items-center">
+                            <span class="text-3xl mr-3">🎥</span>
+                            <div>
+                                <h4 class="font-bold">视频压缩</h4>
+                                <p class="text-xs text-gray-500">新功能 🆕</p>
+                            </div>
+                        </div>
+                        <div class="relative">
+                            <span class="text-purple-600 font-bold">8.4 GB</span>
+                            <div class="badge">!</div>
+                        </div>
+                    </div>
+                    <p class="text-sm text-gray-600">HEVC压缩，节省50%+空间</p>
+                </div>
+            </div>
+            
+            <!-- Screenshots Tab Content (Hidden by default) -->
+            <div id="screenshots-tab" class="pb-20 hidden">
+                <div class="card">
+                    <h3 class="text-lg font-bold mb-4">截图清理 📸</h3>
+                    <div class="space-y-3">
+                        <div class="flex justify-between items-center p-3 bg-gray-50 rounded-lg">
+                            <div>
+                                <p class="font-semibold">今天</p>
+                                <p class="text-xs text-gray-500">23张截图</p>
+                            </div>
+                            <button class="bg-red-500 text-white px-4 py-1 rounded-lg text-sm">删除</button>
+                        </div>
+                        <div class="flex justify-between items-center p-3 bg-gray-50 rounded-lg">
+                            <div>
+                                <p class="font-semibold">昨天</p>
+                                <p class="text-xs text-gray-500">15张截图</p>
+                            </div>
+                            <button class="bg-red-500 text-white px-4 py-1 rounded-lg text-sm">删除</button>
+                        </div>
+                        <div class="flex justify-between items-center p-3 bg-gray-50 rounded-lg">
+                            <div>
+                                <p class="font-semibold">本周</p>
+                                <p class="text-xs text-gray-500">89张截图</p>
+                            </div>
+                            <button class="bg-red-500 text-white px-4 py-1 rounded-lg text-sm">删除</button>
+                        </div>
+                        <div class="flex justify-between items-center p-3 bg-gray-50 rounded-lg">
+                            <div>
+                                <p class="font-semibold">更早</p>
+                                <p class="text-xs text-gray-500">162张截图</p>
+                            </div>
+                            <button class="bg-red-500 text-white px-4 py-1 rounded-lg text-sm">删除</button>
+                        </div>
+                    </div>
+                    <div class="mt-4 p-3 bg-purple-50 rounded-lg border border-purple-200">
+                        <p class="text-sm text-purple-900">💡 批量删除可释放 <strong>1.2 GB</strong> 空间</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Videos Tab Content (Hidden by default) -->
+            <div id="videos-tab" class="pb-20 hidden">
+                <div class="card">
+                    <h3 class="text-lg font-bold mb-4">大视频压缩 🎥</h3>
+                    <div class="space-y-3">
+                        <div class="p-3 bg-gray-50 rounded-lg">
+                            <div class="flex justify-between items-center mb-2">
+                                <p class="font-semibold text-sm">4K_Vacation.MOV</p>
+                                <span class="text-xs text-red-600 font-bold">1.2 GB</span>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <p class="text-xs text-gray-500">压缩后: ~600 MB</p>
+                                <button class="bg-green-500 text-white px-3 py-1 rounded text-xs">压缩</button>
+                            </div>
+                        </div>
+                        <div class="p-3 bg-gray-50 rounded-lg">
+                            <div class="flex justify-between items-center mb-2">
+                                <p class="font-semibold text-sm">Wedding_HD.MOV</p>
+                                <span class="text-xs text-red-600 font-bold">2.8 GB</span>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <p class="text-xs text-gray-500">压缩后: ~1.4 GB</p>
+                                <button class="bg-green-500 text-white px-3 py-1 rounded text-xs">压缩</button>
+                            </div>
+                        </div>
+                        <div class="p-3 bg-gray-50 rounded-lg">
+                            <div class="flex justify-between items-center mb-2">
+                                <p class="font-semibold text-sm">Concert_4K.MOV</p>
+                                <span class="text-xs text-red-600 font-bold">4.4 GB</span>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <p class="text-xs text-gray-500">压缩后: ~2.2 GB</p>
+                                <button class="bg-green-500 text-white px-3 py-1 rounded text-xs">压缩</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-4 p-3 bg-green-50 rounded-lg border border-green-200">
+                        <p class="text-sm text-green-900">✨ HEVC压缩可节省 <strong>4.2 GB</strong> 空间</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Bottom Navigation -->
+            <div class="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 flex justify-around py-3 px-6" style="bottom: 14px;">
+                <div class="flex flex-col items-center">
+                    <span class="text-2xl">🏠</span>
+                    <span class="text-xs mt-1 text-purple-600 font-semibold">首页</span>
+                </div>
+                <div class="flex flex-col items-center opacity-50">
+                    <span class="text-2xl">📊</span>
+                    <span class="text-xs mt-1">统计</span>
+                </div>
+                <div class="flex flex-col items-center opacity-50">
+                    <span class="text-2xl">⚙️</span>
+                    <span class="text-xs mt-1">设置</span>
+                </div>
             </div>
         </div>
-        <p class="mt-10 text-gray-400 text-sm">Swipe left to delete, right to keep</p>
     </div>
+    
+    <script>
+        function showTab(tab) {
+            // Hide all tabs
+            document.getElementById('home-tab').classList.add('hidden');
+            document.getElementById('screenshots-tab').classList.add('hidden');
+            document.getElementById('videos-tab').classList.add('hidden');
+            
+            // Show selected tab
+            document.getElementById(tab + '-tab').classList.remove('hidden');
+            
+            // Update tab buttons
+            const buttons = document.querySelectorAll('button');
+            buttons.forEach(btn => {
+                btn.classList.remove('tab-active');
+                btn.classList.add('text-white');
+            });
+            event.target.classList.add('tab-active');
+            event.target.classList.remove('text-white');
+        }
+    </script>
 </body>
 </html>
