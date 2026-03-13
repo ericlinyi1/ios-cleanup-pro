@@ -3,334 +3,107 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>iOS Cleanup Pro - Full Feature Preview</title>
+    <title>iOS Cleanup Pro - Email Management Preview</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        .iphone-frame { 
-            width: 390px; 
-            height: 844px; 
-            border: 14px solid #1f2937; 
-            border-radius: 42px; 
-            background: #000; 
-            overflow: hidden; 
-            box-shadow: 0 25px 50px rgba(0,0,0,0.6); 
-            position: relative;
-        }
-        .notch {
-            width: 140px;
-            height: 28px;
-            background: #000;
-            border-radius: 0 0 20px 20px;
-            position: absolute;
-            top: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            z-index: 10;
-        }
-        .screen {
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            overflow-y: auto;
-        }
-        .card { 
-            background: white;
-            border-radius: 16px;
-            padding: 16px;
-            margin: 10px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-        }
-        .tab-active {
-            background: white;
-            color: #667eea;
-            font-weight: bold;
-        }
-        .badge {
-            position: absolute;
-            top: -8px;
-            right: -8px;
-            background: #ef4444;
-            color: white;
-            border-radius: 50%;
-            width: 20px;
-            height: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 10px;
-            font-weight: bold;
-        }
-        .lang-btn {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            background: white;
-            padding: 10px 20px;
-            border-radius: 25px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-            cursor: pointer;
-            font-weight: bold;
-            z-index: 100;
-        }
-        .tab-nav-sticky {
-            position: sticky;
-            top: 0;
-            z-index: 50;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            padding-top: 8px;
-            padding-bottom: 12px;
-        }
-        .email-item {
-            border-bottom: 1px solid #f3f4f6;
-            padding: 12px 0;
-        }
-        .email-item:last-child { border-bottom: none; }
+        .iphone-frame { width: 390px; height: 844px; border: 14px solid #1f2937; border-radius: 42px; background: #000; overflow: hidden; box-shadow: 0 25px 50px rgba(0,0,0,0.6); position: relative; }
+        .screen { width: 100%; height: 100%; background: #f9fafb; overflow-y: auto; display: flex; flex-column; }
+        .tab-bar { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding-top: 48px; padding-bottom: 12px; position: sticky; top: 0; z-index: 50; }
+        .card { background: white; border-radius: 16px; padding: 16px; margin: 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); }
+        .email-item { border-bottom: 1px solid #f3f4f6; padding: 12px 16px; background: white; transition: background 0.2s; }
+        .email-item:active { background: #f3f4f6; }
+        .tag { font-size: 9px; padding: 2px 6px; border-radius: 4px; font-weight: bold; margin-right: 4px; }
+        .tag-promo { background: #fee2e2; color: #ef4444; }
+        .tag-bank { background: #dcfce7; color: #16a34a; }
+        .tag-social { background: #dbeafe; color: #2563eb; }
+        .bottom-nav { position: fixed; bottom: 14px; width: 362px; left: 14px; background: rgba(255,255,255,0.9); backdrop-filter: blur(10px); border-top: 1px solid #eee; display: flex; justify-content: space-around; py: 12px; border-radius: 0 0 28px 28px; z-index: 100; padding: 12px 0; }
     </style>
 </head>
 <body class="bg-gray-900 flex items-center justify-center min-h-screen p-8">
-    <button class="lang-btn" onclick="toggleLanguage()">
-        🌐 <span id="lang-label">English</span>
-    </button>
-    
     <div class="iphone-frame">
-        <div class="notch"></div>
         <div class="screen">
-            <div class="flex justify-between items-center px-6 pt-10 pb-4 text-white">
-                <span class="text-sm font-semibold">9:41</span>
-                <span class="text-sm">📶 📡 🔋</span>
-            </div>
-            
-            <div class="px-6 pb-2">
-                <h1 class="text-2xl font-bold text-white mb-1">iOS Cleanup Pro</h1>
-                <p class="text-gray-300 text-xs" data-i18n="app.tagline">智能照片与邮件整理助手</p>
-            </div>
-            
-            <div class="tab-nav-sticky flex space-x-2 px-4 overflow-x-auto no-scrollbar">
-                <button id="btn-home" class="tab-active px-4 py-1.5 rounded-full text-xs whitespace-nowrap" onclick="showTab('home')" data-i18n="tab.home">首页</button>
-                <button id="btn-screenshots" class="px-4 py-1.5 rounded-full text-xs text-white whitespace-nowrap" onclick="showTab('screenshots')" data-i18n="tab.screenshots">截图</button>
-                <button id="btn-videos" class="px-4 py-1.5 rounded-full text-xs text-white whitespace-nowrap" onclick="showTab('videos')" data-i18n="tab.videos">视频</button>
-                <button id="btn-emails" class="px-4 py-1.5 rounded-full text-xs text-white whitespace-nowrap" onclick="showTab('emails')" data-i18n="tab.emails">邮件</button>
-            </div>
-            
-            <div id="home-tab" class="pb-24">
-                <div class="card">
-                    <div class="flex justify-between items-center mb-3">
-                        <h3 class="text-base font-bold" data-i18n="home.storage.title">存储空间</h3>
-                        <span class="text-xl">💾</span>
-                    </div>
-                    <div class="bg-gray-200 h-2.5 rounded-full overflow-hidden">
-                        <div class="bg-gradient-to-r from-purple-500 to-pink-500 h-full" style="width: 72%"></div>
-                    </div>
-                    <p class="text-xs text-gray-600 mt-2" data-i18n="home.storage.used">已使用 36.1 GB / 共 50 GB</p>
+            <!-- Header & Tabs -->
+            <div class="tab-bar px-4">
+                <div class="flex justify-between items-center mb-4 text-white">
+                    <h1 class="text-xl font-bold">Email Cleanup</h1>
+                    <button class="bg-white/20 p-2 rounded-full text-xs" onclick="toggleLanguage()">🌐 EN/ZH</button>
                 </div>
+                <div class="flex space-x-2 overflow-x-auto no-scrollbar">
+                    <button class="bg-white text-purple-700 px-4 py-1.5 rounded-full text-xs font-bold shadow-md">Inbox</button>
+                    <button class="bg-white/20 text-white px-4 py-1.5 rounded-full text-xs font-bold">Promotions</button>
+                    <button class="bg-white/20 text-white px-4 py-1.5 rounded-full text-xs font-bold">Finance</button>
+                    <button class="bg-white/20 text-white px-4 py-1.5 rounded-full text-xs font-bold">Large</button>
+                </div>
+            </div>
+
+            <!-- Content Area -->
+            <div class="pb-24">
+                <div class="card bg-purple-600 text-white !p-4">
+                    <div class="flex justify-between items-start mb-2">
+                        <div>
+                            <h3 class="text-sm font-bold">Smart Analysis Complete</h3>
+                            <p class="text-[10px] opacity-80">Connected to your Gmail via GOG</p>
+                        </div>
+                        <span class="text-2xl">🤖</span>
+                    </div>
+                    <div class="grid grid-cols-2 gap-2 mt-2">
+                        <div class="bg-white/10 p-2 rounded-lg"><p class="text-[9px]">Promos</p><p class="font-bold">128</p></div>
+                        <div class="bg-white/10 p-2 rounded-lg"><p class="text-[9px]">Unused Space</p><p class="font-bold">2.4 GB</p></div>
+                    </div>
+                </div>
+
+                <!-- Live Data List (Mocked from GOG Results) -->
+                <div class="text-[10px] font-bold text-gray-400 px-4 mb-2 uppercase tracking-wider">Recent Cleanable Emails</div>
                 
-                <div class="card bg-purple-50 border border-purple-100">
-                    <div class="flex items-center justify-between mb-2">
-                        <div class="flex items-center">
-                            <span class="text-2xl mr-2">📧</span>
-                            <div>
-                                <h4 class="font-bold text-sm" data-i18n="feature.email.title">邮件管理</h4>
-                                <p class="text-[10px] text-purple-600 font-semibold" data-i18n="feature.email.status">新功能预览 🆕</p>
-                            </div>
-                        </div>
-                        <div class="badge">!</div>
+                <div class="email-item">
+                    <div class="flex justify-between mb-1">
+                        <span class="text-xs font-bold text-gray-900">Shutterstock</span>
+                        <span class="text-[9px] text-gray-400">23:11</span>
                     </div>
-                    <p class="text-xs text-gray-700" data-i18n="feature.email.desc">扫描 Gmail，自动清理广告与大附件邮件</p>
+                    <p class="text-[10px] text-gray-600 truncate mb-1">How to build your brand identity in 5 steps</p>
+                    <span class="tag tag-promo">ADVERTISEMENT</span>
                 </div>
 
-                <div class="card">
-                    <div class="flex items-center justify-between">
-                        <div class="flex items-center">
-                            <span class="text-2xl mr-2">🖼️</span>
-                            <h4 class="font-bold text-sm" data-i18n="feature.duplicates.title">重复照片检测</h4>
-                        </div>
-                        <span class="text-purple-600 font-bold text-xs">127张</span>
+                <div class="email-item">
+                    <div class="flex justify-between mb-1">
+                        <span class="text-xs font-bold text-gray-900">Standard Chartered</span>
+                        <span class="text-[9px] text-gray-400">14:31</span>
                     </div>
+                    <p class="text-[10px] text-gray-600 truncate mb-1">Your eStatement for Mar is now available</p>
+                    <span class="tag tag-bank">FINANCE</span><span class="tag bg-gray-100 text-gray-600">📎 1.2 MB</span>
+                </div>
+
+                <div class="email-item">
+                    <div class="flex justify-between mb-1">
+                        <span class="text-xs font-bold text-gray-900">LinkedIn Job Alerts</span>
+                        <span class="text-[9px] text-gray-400">19:08</span>
+                    </div>
+                    <p class="text-[10px] text-gray-600 truncate mb-1">New IT Head positions in UOB and more</p>
+                    <span class="tag tag-social">SUBSCRIPTION</span>
+                </div>
+
+                <div class="email-item">
+                    <div class="flex justify-between mb-1">
+                        <span class="text-xs font-bold text-gray-900">Mandai Wildlife</span>
+                        <span class="text-[9px] text-gray-400">Mar 07</span>
+                    </div>
+                    <p class="text-[10px] text-gray-600 truncate mb-1">E-Tickets - Order No: 14500540</p>
+                    <span class="tag tag-promo">TICKET</span><span class="tag bg-gray-100 text-gray-600">📎 2.8 MB</span>
+                </div>
+
+                <div class="p-4">
+                    <button class="w-full bg-purple-600 text-white py-3 rounded-xl text-sm font-bold shadow-lg active:scale-95 transition-transform" onclick="alert('Batch Cleanup Started!')">One-Tap Inbox Cleanup</button>
                 </div>
             </div>
 
-            <div id="screenshots-tab" class="pb-24 hidden">
-                <div class="card">
-                    <h3 class="text-base font-bold mb-3" data-i18n="screenshots.title">截图清理 📸</h3>
-                    <div class="space-y-2">
-                        <div class="flex justify-between items-center p-2.5 bg-gray-50 rounded-lg">
-                            <span class="text-sm font-medium" data-i18n="screenshots.today">今天</span>
-                            <button class="bg-red-500 text-white px-3 py-1 rounded-md text-[10px]" data-i18n="button.delete">删除</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div id="emails-tab" class="pb-24 hidden">
-                <div class="px-4 pt-2">
-                    <div class="flex space-x-2 mb-4 overflow-x-auto no-scrollbar pb-1">
-                        <button class="bg-white text-purple-600 text-[10px] font-bold px-3 py-1 rounded-full shadow-sm" data-i18n="email.filter.all">全部</button>
-                        <button class="bg-purple-200/50 text-purple-700 text-[10px] font-medium px-3 py-1 rounded-full" data-i18n="email.filter.ads">广告</button>
-                        <button class="bg-purple-200/50 text-purple-700 text-[10px] font-medium px-3 py-1 rounded-full" data-i18n="email.filter.large">大附件</button>
-                        <button class="bg-purple-200/50 text-purple-700 text-[10px] font-medium px-3 py-1 rounded-full" data-i18n="email.filter.unread">未读</button>
-                    </div>
-
-                    <div class="card !p-0 overflow-hidden">
-                        <div class="bg-purple-600 text-white p-3 flex justify-between items-center">
-                            <span class="text-xs font-bold" data-i18n="email.list.title">收件箱</span>
-                            <span class="text-[10px] opacity-80">2,481 封邮件</span>
-                        </div>
-                        <div class="p-3">
-                            <div class="email-item">
-                                <div class="flex justify-between mb-1">
-                                    <span class="text-xs font-bold text-gray-800">Netflix</span>
-                                    <span class="text-[10px] text-gray-400">10:45 AM</span>
-                                </div>
-                                <p class="text-[10px] font-semibold text-gray-700 truncate">Your subscription has been renewed</p>
-                                <div class="flex mt-1 space-x-2">
-                                    <span class="text-[8px] bg-blue-100 text-blue-600 px-1.5 py-0.5 rounded">Subscriptions</span>
-                                </div>
-                            </div>
-                            <div class="email-item">
-                                <div class="flex justify-between mb-1">
-                                    <span class="text-xs font-bold text-gray-800">Apple</span>
-                                    <span class="text-[10px] text-gray-400">昨天</span>
-                                </div>
-                                <p class="text-[10px] text-gray-500 truncate">您的 iCloud 存储空间已满</p>
-                                <div class="flex mt-1 space-x-2">
-                                    <span class="text-[8px] bg-red-100 text-red-600 px-1.5 py-0.5 rounded">Alert</span>
-                                    <span class="text-[8px] text-gray-400">📎 2.4 MB</span>
-                                </div>
-                            </div>
-                            <div class="email-item">
-                                <div class="flex justify-between mb-1">
-                                    <span class="text-xs font-bold text-gray-800">Brave Rewards</span>
-                                    <span class="text-[10px] text-gray-400">周三</span>
-                                </div>
-                                <p class="text-[10px] text-gray-500 truncate">You've earned 5.2 BAT this month!</p>
-                            </div>
-                        </div>
-                        <button class="w-full bg-gray-50 py-3 text-xs font-bold text-purple-600 border-t border-gray-100" data-i18n="button.clean_all">一键规整收件箱</button>
-                    </div>
-
-                    <div class="card mt-4">
-                        <h4 class="text-xs font-bold mb-3" data-i18n="email.attachment.title">按附件类型清理</h4>
-                        <div class="grid grid-cols-2 gap-3">
-                            <div class="bg-gray-50 p-3 rounded-xl flex flex-col items-center">
-                                <span class="text-xl mb-1">📄</span>
-                                <span class="text-[10px] font-bold">PDF</span>
-                                <span class="text-[8px] text-gray-400">452 MB</span>
-                            </div>
-                            <div class="bg-gray-50 p-3 rounded-xl flex flex-col items-center">
-                                <span class="text-xl mb-1">🖼️</span>
-                                <span class="text-[10px] font-bold" data-i18n="unit.images">图片</span>
-                                <span class="text-[8px] text-gray-400">1.2 GB</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="fixed bottom-0 left-0 right-0 bg-white/90 backdrop-blur-md border-t border-gray-200 flex justify-around py-3 px-6 z-50" style="bottom: 14px; width: 362px; left: 14px; border-radius: 0 0 28px 28px;">
-                <div class="flex flex-col items-center">
-                    <span class="text-xl">🏠</span>
-                    <span class="text-[10px] mt-1 text-purple-600 font-semibold" data-i18n="tab.home">首页</span>
-                </div>
-                <div class="flex flex-col items-center opacity-40">
-                    <span class="text-xl">📊</span>
-                    <span class="text-[10px] mt-1" data-i18n="tab.stats">统计</span>
-                </div>
-                <div class="flex flex-col items-center opacity-40">
-                    <span class="text-xl">⚙️</span>
-                    <span class="text-[10px] mt-1" data-i18n="tab.settings">设置</span>
-                </div>
+            <!-- Bottom Nav -->
+            <div class="bottom-nav">
+                <div class="flex flex-col items-center"><span class="text-xl opacity-40">🏠</span><p class="text-[8px] mt-1">Photos</p></div>
+                <div class="flex flex-col items-center"><span class="text-xl text-purple-600">📧</span><p class="text-[8px] mt-1 font-bold text-purple-600">Email</p></div>
+                <div class="flex flex-col items-center"><span class="text-xl opacity-40">📊</span><p class="text-[8px] mt-1">Stats</p></div>
+                <div class="flex flex-col items-center"><span class="text-xl opacity-40">⚙️</span><p class="text-[8px] mt-1">Settings</p></div>
             </div>
         </div>
     </div>
-    
-    <script>
-        const translations = {
-            'zh-Hans': {
-                'app.tagline': '智能照片与邮件整理助手',
-                'tab.home': '首页',
-                'tab.screenshots': '截图',
-                'tab.videos': '视频',
-                'tab.emails': '邮件',
-                'tab.stats': '统计',
-                'tab.settings': '设置',
-                'home.storage.title': '存储空间',
-                'home.storage.used': '已使用 36.1 GB / 共 50 GB',
-                'feature.email.title': '邮件管理',
-                'feature.email.status': '新功能预览 🆕',
-                'feature.email.desc': '扫描 Gmail，自动清理广告与大附件邮件',
-                'feature.duplicates.title': '重复照片检测',
-                'email.filter.all': '全部',
-                'email.filter.ads': '广告',
-                'email.filter.large': '大附件',
-                'email.filter.unread': '未读',
-                'email.list.title': '收件箱',
-                'email.attachment.title': '按附件类型清理',
-                'button.clean_all': '一键规整收件箱',
-                'button.delete': '删除',
-                'unit.images': '图片',
-                'screenshots.title': '截图清理 📸',
-                'screenshots.today': '今天'
-            },
-            'en': {
-                'app.tagline': 'Smart Photo & Email Organizer',
-                'tab.home': 'Home',
-                'tab.screenshots': 'Screenshots',
-                'tab.videos': 'Videos',
-                'tab.emails': 'Emails',
-                'tab.stats': 'Stats',
-                'tab.settings': 'Settings',
-                'home.storage.title': 'Storage',
-                'home.storage.used': 'Used 36.1 GB / Total 50 GB',
-                'feature.email.title': 'Email Management',
-                'feature.email.status': 'Preview 🆕',
-                'feature.email.desc': 'Scan Gmail, clean ads and large attachments',
-                'feature.duplicates.title': 'Duplicate Photos',
-                'email.filter.all': 'All',
-                'email.filter.ads': 'Ads',
-                'email.filter.large': 'Large',
-                'email.filter.unread': 'Unread',
-                'email.list.title': 'Inbox',
-                'email.attachment.title': 'Clean by Attachment',
-                'button.clean_all': 'Quick Inbox Cleanup',
-                'button.delete': 'Delete',
-                'unit.images': 'Images',
-                'screenshots.title': 'Screenshot Cleanup 📸',
-                'screenshots.today': 'Today'
-            }
-        };
-        
-        let currentLang = 'zh-Hans';
-        
-        function setLanguage(lang) {
-            currentLang = lang;
-            document.documentElement.lang = lang;
-            document.getElementById('lang-label').textContent = lang === 'en' ? '中文' : 'English';
-            document.querySelectorAll('[data-i18n]').forEach(el => {
-                const key = el.getAttribute('data-i18n');
-                if (translations[lang][key]) el.innerHTML = translations[lang][key];
-            });
-            localStorage.setItem('preferredLanguage', lang);
-        }
-        
-        function toggleLanguage() { setLanguage(currentLang === 'zh-Hans' ? 'en' : 'zh-Hans'); }
-        
-        function showTab(tab) {
-            ['home', 'screenshots', 'videos', 'emails'].forEach(t => {
-                const el = document.getElementById(t + '-tab');
-                if (el) el.classList.add('hidden');
-                const btn = document.getElementById('btn-' + t);
-                if (btn) {
-                    btn.classList.remove('tab-active');
-                    btn.classList.add('text-white');
-                }
-            });
-            document.getElementById(tab + '-tab').classList.remove('hidden');
-            const activeBtn = document.getElementById('btn-' + tab);
-            activeBtn.classList.add('tab-active');
-            activeBtn.classList.remove('text-white');
-        }
-        
-        setLanguage(localStorage.getItem('preferredLanguage') || 'zh-Hans');
-    </script>
 </body>
 </html>
