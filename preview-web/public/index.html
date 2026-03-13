@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-Hans">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -60,21 +60,26 @@
             font-size: 12px;
             font-weight: bold;
         }
-        .lang-switch {
+        .lang-btn {
             position: fixed;
             top: 20px;
             right: 20px;
-            z-index: 1000;
+            background: white;
+            padding: 10px 20px;
+            border-radius: 25px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            cursor: pointer;
+            font-weight: bold;
+            z-index: 100;
         }
     </style>
 </head>
 <body class="bg-gray-900 flex items-center justify-center min-h-screen p-8">
-    <!-- Language Switcher -->
-    <div class="lang-switch">
-        <button onclick="switchLanguage('en')" id="btn-en" class="px-4 py-2 bg-blue-600 text-white rounded-l-lg font-semibold">EN</button>
-        <button onclick="switchLanguage('zh')" id="btn-zh" class="px-4 py-2 bg-gray-600 text-white rounded-r-lg font-semibold">中文</button>
-    </div>
-
+    <!-- Language Toggle Button -->
+    <button class="lang-btn" onclick="toggleLanguage()">
+        🌐 <span id="lang-label">English</span>
+    </button>
+    
     <div class="iphone-frame">
         <div class="notch"></div>
         <div class="screen">
@@ -86,15 +91,15 @@
             
             <!-- App Title -->
             <div class="px-6 pb-4">
-                <h1 class="text-3xl font-bold text-white mb-2" data-i18n="app.name">iOS Cleanup Pro</h1>
+                <h1 class="text-3xl font-bold text-white mb-2">iOS Cleanup Pro</h1>
                 <p class="text-gray-300 text-sm" data-i18n="app.tagline">智能照片整理助手</p>
             </div>
             
             <!-- Tab Navigation -->
             <div class="flex space-x-2 px-6 pb-4">
                 <button class="tab-active px-4 py-2 rounded-full text-sm" onclick="showTab('home')" data-i18n="tab.home">首页</button>
-                <button class="px-4 py-2 rounded-full text-sm text-white" onclick="showTab('screenshots')" data-i18n="screenshots.title">截图</button>
-                <button class="px-4 py-2 rounded-full text-sm text-white" onclick="showTab('videos')" data-i18n="video.title">视频</button>
+                <button class="px-4 py-2 rounded-full text-sm text-white" onclick="showTab('screenshots')" data-i18n="tab.screenshots">截图</button>
+                <button class="px-4 py-2 rounded-full text-sm text-white" onclick="showTab('videos')" data-i18n="tab.videos">视频</button>
             </div>
             
             <!-- Home Tab Content -->
@@ -122,11 +127,11 @@
                             </div>
                         </div>
                         <div class="relative">
-                            <span class="text-purple-600 font-bold">127</span>
+                            <span class="text-purple-600 font-bold">127<span data-i18n="unit.photos">张</span></span>
                             <div class="badge">!</div>
                         </div>
                     </div>
-                    <p class="text-sm text-gray-600" data-i18n-template="feature.duplicates.description">发现127张重复照片，可释放 2.3 GB</p>
+                    <p class="text-sm text-gray-600" data-i18n="feature.duplicates.desc">发现127张重复照片，可释放 2.3 GB</p>
                 </div>
                 
                 <div class="card">
@@ -138,9 +143,9 @@
                                 <p class="text-xs text-gray-500" data-i18n="feature.similar.status">AI驱动 ✅</p>
                             </div>
                         </div>
-                        <span class="text-purple-600 font-bold">43</span>
+                        <span class="text-purple-600 font-bold">43<span data-i18n="unit.groups">组</span></span>
                     </div>
-                    <p class="text-sm text-gray-600" data-i18n="feature.similar.description">智能识别连拍和相似场景</p>
+                    <p class="text-sm text-gray-600" data-i18n="feature.similar.desc">智能识别连拍和相似场景</p>
                 </div>
                 
                 <div class="card">
@@ -153,11 +158,11 @@
                             </div>
                         </div>
                         <div class="relative">
-                            <span class="text-purple-600 font-bold">289</span>
+                            <span class="text-purple-600 font-bold">289<span data-i18n="unit.photos">张</span></span>
                             <div class="badge">!</div>
                         </div>
                     </div>
-                    <p class="text-sm text-gray-600" data-i18n="feature.screenshots.description">自动识别所有截图，一键清理</p>
+                    <p class="text-sm text-gray-600" data-i18n="feature.screenshots.desc">自动识别所有截图，一键清理</p>
                 </div>
                 
                 <div class="card">
@@ -169,9 +174,9 @@
                                 <p class="text-xs text-gray-500" data-i18n="feature.albums.status">新功能 🆕</p>
                             </div>
                         </div>
-                        <span class="text-purple-600 font-bold">12</span>
+                        <span class="text-purple-600 font-bold">12<span data-i18n="unit.albums">个</span></span>
                     </div>
-                    <p class="text-sm text-gray-600" data-i18n="feature.albums.description">创建自定义相册，批量移动照片</p>
+                    <p class="text-sm text-gray-600" data-i18n="feature.albums.desc">创建自定义相册，批量移动照片</p>
                 </div>
                 
                 <div class="card">
@@ -188,11 +193,11 @@
                             <div class="badge">!</div>
                         </div>
                     </div>
-                    <p class="text-sm text-gray-600" data-i18n="feature.video.description">HEVC压缩，节省50%+空间</p>
+                    <p class="text-sm text-gray-600" data-i18n="feature.video.desc">HEVC压缩，节省50%+空间</p>
                 </div>
             </div>
             
-            <!-- Screenshots Tab Content (Hidden by default) -->
+            <!-- Screenshots Tab Content -->
             <div id="screenshots-tab" class="pb-20 hidden">
                 <div class="card">
                     <h3 class="text-lg font-bold mb-4" data-i18n="screenshots.title">截图清理 📸</h3>
@@ -200,39 +205,39 @@
                         <div class="flex justify-between items-center p-3 bg-gray-50 rounded-lg">
                             <div>
                                 <p class="font-semibold" data-i18n="screenshots.today">今天</p>
-                                <p class="text-xs text-gray-500" data-i18n-template="screenshots.count">23张截图</p>
+                                <p class="text-xs text-gray-500">23<span data-i18n="unit.screenshots">张截图</span></p>
                             </div>
                             <button class="bg-red-500 text-white px-4 py-1 rounded-lg text-sm" data-i18n="button.delete">删除</button>
                         </div>
                         <div class="flex justify-between items-center p-3 bg-gray-50 rounded-lg">
                             <div>
                                 <p class="font-semibold" data-i18n="screenshots.yesterday">昨天</p>
-                                <p class="text-xs text-gray-500" data-i18n-template="screenshots.count">15张截图</p>
+                                <p class="text-xs text-gray-500">15<span data-i18n="unit.screenshots">张截图</span></p>
                             </div>
                             <button class="bg-red-500 text-white px-4 py-1 rounded-lg text-sm" data-i18n="button.delete">删除</button>
                         </div>
                         <div class="flex justify-between items-center p-3 bg-gray-50 rounded-lg">
                             <div>
                                 <p class="font-semibold" data-i18n="screenshots.thisWeek">本周</p>
-                                <p class="text-xs text-gray-500" data-i18n-template="screenshots.count">89张截图</p>
+                                <p class="text-xs text-gray-500">89<span data-i18n="unit.screenshots">张截图</span></p>
                             </div>
                             <button class="bg-red-500 text-white px-4 py-1 rounded-lg text-sm" data-i18n="button.delete">删除</button>
                         </div>
                         <div class="flex justify-between items-center p-3 bg-gray-50 rounded-lg">
                             <div>
                                 <p class="font-semibold" data-i18n="screenshots.older">更早</p>
-                                <p class="text-xs text-gray-500" data-i18n-template="screenshots.count">162张截图</p>
+                                <p class="text-xs text-gray-500">162<span data-i18n="unit.screenshots">张截图</span></p>
                             </div>
                             <button class="bg-red-500 text-white px-4 py-1 rounded-lg text-sm" data-i18n="button.delete">删除</button>
                         </div>
                     </div>
                     <div class="mt-4 p-3 bg-purple-50 rounded-lg border border-purple-200">
-                        <p class="text-sm text-purple-900" data-i18n-template="screenshots.canFree">💡 批量删除可释放 1.2 GB</p>
+                        <p class="text-sm text-purple-900" data-i18n="screenshots.canFree">💡 批量删除可释放 <strong>1.2 GB</strong> 空间</p>
                     </div>
                 </div>
             </div>
             
-            <!-- Videos Tab Content (Hidden by default) -->
+            <!-- Videos Tab Content -->
             <div id="videos-tab" class="pb-20 hidden">
                 <div class="card">
                     <h3 class="text-lg font-bold mb-4" data-i18n="video.title">大视频压缩 🎥</h3>
@@ -243,7 +248,7 @@
                                 <span class="text-xs text-red-600 font-bold">1.2 GB</span>
                             </div>
                             <div class="flex justify-between items-center">
-                                <p class="text-xs text-gray-500" data-i18n-template="video.afterCompression">压缩后: ~600 MB</p>
+                                <p class="text-xs text-gray-500" data-i18n="video.afterCompression">压缩后: ~600 MB</p>
                                 <button class="bg-green-500 text-white px-3 py-1 rounded text-xs" data-i18n="button.compress">压缩</button>
                             </div>
                         </div>
@@ -253,7 +258,7 @@
                                 <span class="text-xs text-red-600 font-bold">2.8 GB</span>
                             </div>
                             <div class="flex justify-between items-center">
-                                <p class="text-xs text-gray-500" data-i18n-template="video.afterCompression">压缩后: ~1.4 GB</p>
+                                <p class="text-xs text-gray-500" data-i18n="video.afterCompression">压缩后: ~1.4 GB</p>
                                 <button class="bg-green-500 text-white px-3 py-1 rounded text-xs" data-i18n="button.compress">压缩</button>
                             </div>
                         </div>
@@ -263,13 +268,13 @@
                                 <span class="text-xs text-red-600 font-bold">4.4 GB</span>
                             </div>
                             <div class="flex justify-between items-center">
-                                <p class="text-xs text-gray-500" data-i18n-template="video.afterCompression">压缩后: ~2.2 GB</p>
+                                <p class="text-xs text-gray-500" data-i18n="video.afterCompression">压缩后: ~2.2 GB</p>
                                 <button class="bg-green-500 text-white px-3 py-1 rounded text-xs" data-i18n="button.compress">压缩</button>
                             </div>
                         </div>
                     </div>
                     <div class="mt-4 p-3 bg-green-50 rounded-lg border border-green-200">
-                        <p class="text-sm text-green-900" data-i18n-template="video.canSave">✨ HEVC压缩可节省 4.2 GB</p>
+                        <p class="text-sm text-green-900" data-i18n="video.canSave">✨ HEVC压缩可节省 <strong>4.2 GB</strong> 空间</p>
                     </div>
                 </div>
             </div>
@@ -293,109 +298,112 @@
     </div>
     
     <script>
-        // i18n translations
+        // i18n Translation Dictionary
         const translations = {
-            en: {
-                "app.name": "iOS Cleanup Pro",
-                "app.tagline": "Smart Photo Organizer",
-                "tab.home": "Home",
-                "tab.stats": "Stats",
-                "tab.settings": "Settings",
-                "home.storage.title": "Storage",
-                "home.storage.used": "Used 34.2 GB / Total 50 GB",
-                "feature.duplicates.title": "Duplicate Photos",
-                "feature.duplicates.status": "Completed ✅",
-                "feature.duplicates.description": "Found 127 duplicate photos, can free up 2.3 GB",
-                "feature.similar.title": "Similar Photos",
-                "feature.similar.status": "AI Powered ✅",
-                "feature.similar.description": "Smart detection of burst shots and similar scenes",
-                "feature.screenshots.title": "Screenshot Cleanup",
-                "feature.screenshots.status": "New Feature 🆕",
-                "feature.screenshots.description": "Auto-detect all screenshots, one-tap cleanup",
-                "feature.albums.title": "Album Management",
-                "feature.albums.status": "New Feature 🆕",
-                "feature.albums.description": "Create custom albums, batch move photos",
-                "feature.video.title": "Video Compression",
-                "feature.video.status": "New Feature 🆕",
-                "feature.video.description": "HEVC compression, save 50%+ space",
-                "screenshots.title": "Screenshot Cleanup 📸",
-                "screenshots.today": "Today",
-                "screenshots.yesterday": "Yesterday",
-                "screenshots.thisWeek": "This Week",
-                "screenshots.older": "Older",
-                "screenshots.count": "23 screenshots",
-                "screenshots.canFree": "💡 Batch delete can free up 1.2 GB",
-                "button.delete": "Delete",
-                "video.title": "Large Video Compression 🎥",
-                "video.afterCompression": "After compression: ~600 MB",
-                "video.canSave": "✨ HEVC compression can save 4.2 GB",
-                "button.compress": "Compress"
+            'zh-Hans': {
+                'app.tagline': '智能照片整理助手',
+                'tab.home': '首页',
+                'tab.screenshots': '截图',
+                'tab.videos': '视频',
+                'tab.stats': '统计',
+                'tab.settings': '设置',
+                'home.storage.title': '存储空间',
+                'home.storage.used': '已使用 34.2 GB / 共 50 GB',
+                'feature.duplicates.title': '重复照片检测',
+                'feature.duplicates.status': '已完成 ✅',
+                'feature.duplicates.desc': '发现127张重复照片，可释放 2.3 GB',
+                'feature.similar.title': '相似照片聚类',
+                'feature.similar.status': 'AI驱动 ✅',
+                'feature.similar.desc': '智能识别连拍和相似场景',
+                'feature.screenshots.title': '截图清理',
+                'feature.screenshots.status': '新功能 🆕',
+                'feature.screenshots.desc': '自动识别所有截图，一键清理',
+                'feature.albums.title': '相册管理',
+                'feature.albums.status': '新功能 🆕',
+                'feature.albums.desc': '创建自定义相册，批量移动照片',
+                'feature.video.title': '视频压缩',
+                'feature.video.status': '新功能 🆕',
+                'feature.video.desc': 'HEVC压缩，节省50%+空间',
+                'screenshots.title': '截图清理 📸',
+                'screenshots.today': '今天',
+                'screenshots.yesterday': '昨天',
+                'screenshots.thisWeek': '本周',
+                'screenshots.older': '更早',
+                'screenshots.canFree': '💡 批量删除可释放 <strong>1.2 GB</strong> 空间',
+                'video.title': '大视频压缩 🎥',
+                'video.afterCompression': '压缩后: ~600 MB',
+                'video.canSave': '✨ HEVC压缩可节省 <strong>4.2 GB</strong> 空间',
+                'button.delete': '删除',
+                'button.compress': '压缩',
+                'unit.photos': '张',
+                'unit.groups': '组',
+                'unit.albums': '个',
+                'unit.screenshots': '张截图'
             },
-            zh: {
-                "app.name": "iOS Cleanup Pro",
-                "app.tagline": "智能照片整理助手",
-                "tab.home": "首页",
-                "tab.stats": "统计",
-                "tab.settings": "设置",
-                "home.storage.title": "存储空间",
-                "home.storage.used": "已使用 34.2 GB / 共 50 GB",
-                "feature.duplicates.title": "重复照片检测",
-                "feature.duplicates.status": "已完成 ✅",
-                "feature.duplicates.description": "发现127张重复照片，可释放 2.3 GB",
-                "feature.similar.title": "相似照片聚类",
-                "feature.similar.status": "AI驱动 ✅",
-                "feature.similar.description": "智能识别连拍和相似场景",
-                "feature.screenshots.title": "截图清理",
-                "feature.screenshots.status": "新功能 🆕",
-                "feature.screenshots.description": "自动识别所有截图，一键清理",
-                "feature.albums.title": "相册管理",
-                "feature.albums.status": "新功能 🆕",
-                "feature.albums.description": "创建自定义相册，批量移动照片",
-                "feature.video.title": "视频压缩",
-                "feature.video.status": "新功能 🆕",
-                "feature.video.description": "HEVC压缩，节省50%+空间",
-                "screenshots.title": "截图清理 📸",
-                "screenshots.today": "今天",
-                "screenshots.yesterday": "昨天",
-                "screenshots.thisWeek": "本周",
-                "screenshots.older": "更早",
-                "screenshots.count": "23张截图",
-                "screenshots.canFree": "💡 批量删除可释放 1.2 GB",
-                "button.delete": "删除",
-                "video.title": "大视频压缩 🎥",
-                "video.afterCompression": "压缩后: ~600 MB",
-                "video.canSave": "✨ HEVC压缩可节省 4.2 GB",
-                "button.compress": "压缩"
+            'en': {
+                'app.tagline': 'Smart Photo Organizer',
+                'tab.home': 'Home',
+                'tab.screenshots': 'Screenshots',
+                'tab.videos': 'Videos',
+                'tab.stats': 'Stats',
+                'tab.settings': 'Settings',
+                'home.storage.title': 'Storage',
+                'home.storage.used': 'Used 34.2 GB / Total 50 GB',
+                'feature.duplicates.title': 'Duplicate Photos',
+                'feature.duplicates.status': 'Completed ✅',
+                'feature.duplicates.desc': 'Found 127 duplicate photos, can free up 2.3 GB',
+                'feature.similar.title': 'Similar Photos',
+                'feature.similar.status': 'AI Powered ✅',
+                'feature.similar.desc': 'Smart detection of burst shots and similar scenes',
+                'feature.screenshots.title': 'Screenshot Cleanup',
+                'feature.screenshots.status': 'New Feature 🆕',
+                'feature.screenshots.desc': 'Auto-detect all screenshots, one-tap cleanup',
+                'feature.albums.title': 'Album Management',
+                'feature.albums.status': 'New Feature 🆕',
+                'feature.albums.desc': 'Create custom albums, batch move photos',
+                'feature.video.title': 'Video Compression',
+                'feature.video.status': 'New Feature 🆕',
+                'feature.video.desc': 'HEVC compression, save 50%+ space',
+                'screenshots.title': 'Screenshot Cleanup 📸',
+                'screenshots.today': 'Today',
+                'screenshots.yesterday': 'Yesterday',
+                'screenshots.thisWeek': 'This Week',
+                'screenshots.older': 'Older',
+                'screenshots.canFree': '💡 Batch delete can free up <strong>1.2 GB</strong>',
+                'video.title': 'Large Video Compression 🎥',
+                'video.afterCompression': 'After compression: ~600 MB',
+                'video.canSave': '✨ HEVC compression can save <strong>4.2 GB</strong>',
+                'button.delete': 'Delete',
+                'button.compress': 'Compress',
+                'unit.photos': '',
+                'unit.groups': ' groups',
+                'unit.albums': ' albums',
+                'unit.screenshots': ' screenshots'
             }
         };
         
-        let currentLang = 'zh';
+        let currentLang = 'zh-Hans';
         
-        function switchLanguage(lang) {
+        function setLanguage(lang) {
             currentLang = lang;
+            document.documentElement.lang = lang;
+            document.getElementById('lang-label').textContent = lang === 'en' ? '中文' : 'English';
             
-            // Update button styles
-            document.getElementById('btn-en').className = lang === 'en' 
-                ? 'px-4 py-2 bg-blue-600 text-white rounded-l-lg font-semibold' 
-                : 'px-4 py-2 bg-gray-600 text-white rounded-l-lg font-semibold';
-            document.getElementById('btn-zh').className = lang === 'zh' 
-                ? 'px-4 py-2 bg-blue-600 text-white rounded-r-lg font-semibold' 
-                : 'px-4 py-2 bg-gray-600 text-white rounded-r-lg font-semibold';
-            
-            // Update all text
-            document.querySelectorAll('[data-i18n]').forEach(el => {
-                const key = el.getAttribute('data-i18n');
-                if (translations[lang][key]) {
-                    el.textContent = translations[lang][key];
+            // Update all i18n elements
+            document.querySelectorAll('[data-i18n]').forEach(element => {
+                const key = element.getAttribute('data-i18n');
+                if (translations[lang] && translations[lang][key]) {
+                    element.innerHTML = translations[lang][key];
                 }
             });
             
-            document.querySelectorAll('[data-i18n-template]').forEach(el => {
-                const key = el.getAttribute('data-i18n-template');
-                if (translations[lang][key]) {
-                    el.textContent = translations[lang][key];
-                }
-            });
+            // Save preference
+            localStorage.setItem('preferredLanguage', lang);
+        }
+        
+        function toggleLanguage() {
+            const newLang = currentLang === 'zh-Hans' ? 'en' : 'zh-Hans';
+            setLanguage(newLang);
         }
         
         function showTab(tab) {
@@ -408,22 +416,18 @@
             document.getElementById(tab + '-tab').classList.remove('hidden');
             
             // Update tab buttons
-            const buttons = document.querySelectorAll('.flex.space-x-2 > button');
-            buttons.forEach((btn, idx) => {
-                if ((tab === 'home' && idx === 0) || 
-                    (tab === 'screenshots' && idx === 1) || 
-                    (tab === 'videos' && idx === 2)) {
-                    btn.classList.add('tab-active');
-                    btn.classList.remove('text-white');
-                } else {
-                    btn.classList.remove('tab-active');
-                    btn.classList.add('text-white');
-                }
+            const buttons = document.querySelectorAll('.flex.space-x-2 button');
+            buttons.forEach(btn => {
+                btn.classList.remove('tab-active');
+                btn.classList.add('text-white');
             });
+            event.target.classList.add('tab-active');
+            event.target.classList.remove('text-white');
         }
         
-        // Initialize with Chinese
-        switchLanguage('zh');
+        // Initialize with saved preference or default
+        const savedLang = localStorage.getItem('preferredLanguage') || 'zh-Hans';
+        setLanguage(savedLang);
     </script>
 </body>
 </html>

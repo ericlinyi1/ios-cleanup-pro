@@ -1,32 +1,57 @@
 import SwiftUI
 
+/// Swipe-based photo review interface
+/// Updated for Issue #10: Multi-language Support
 struct SwipeReviewView: View {
     @State private var offset: CGSize = .zero
     @State private var photos = ["photo1", "photo2", "photo3"] // Mock data
     
     var body: some View {
-        ZStack {
-            ForEach(photos.indices, id: \.self) { index in
-                CardView(imageName: photos[index])
-                    .offset(index == photos.count - 1 ? offset : .zero)
-                    .gesture(
-                        DragGesture()
-                            .onChanged { gesture in
-                                if index == photos.count - 1 {
-                                    offset = gesture.translation
+        VStack {
+            Text("review.title".localized)
+                .font(.largeTitle)
+                .fontWeight(.bold)
+                .padding()
+            
+            ZStack {
+                ForEach(photos.indices, id: \.self) { index in
+                    CardView(imageName: photos[index])
+                        .offset(index == photos.count - 1 ? offset : .zero)
+                        .gesture(
+                            DragGesture()
+                                .onChanged { gesture in
+                                    if index == photos.count - 1 {
+                                        offset = gesture.translation
+                                    }
                                 }
-                            }
-                            .onEnded { _ in
-                                if abs(offset.width) > 100 {
-                                    // Handle delete (left) or keep (right)
-                                    photos.removeLast()
+                                .onEnded { _ in
+                                    if abs(offset.width) > 100 {
+                                        // Handle delete (left) or keep (right)
+                                        photos.removeLast()
+                                    }
+                                    offset = .zero
                                 }
-                                offset = .zero
-                            }
-                    )
+                        )
+                }
             }
+            .padding()
+            
+            HStack(spacing: 40) {
+                Text("review.swipeLeft".localized)
+                    .foregroundColor(.red)
+                    .font(.headline)
+                
+                Text("review.swipeRight".localized)
+                    .foregroundColor(.green)
+                    .font(.headline)
+            }
+            .padding()
+            
+            Text("review.hint".localized)
+                .font(.caption)
+                .foregroundColor(.gray)
+                .padding(.bottom)
         }
-        .padding()
     }
 }
 

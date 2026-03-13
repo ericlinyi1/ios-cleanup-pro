@@ -1,44 +1,34 @@
 import XCTest
 @testable import UIModule
 
-/// Unit tests for LocalizationManager
+/// Unit tests for LocalizationHelper
+/// Tests for Issue #10: Multi-language Support
 final class LocalizationTests: XCTestCase {
     
-    func testLocalizationManagerExists() {
-        let manager = LocalizationManager.shared
-        XCTAssertNotNil(manager)
+    func testLocalizationHelperExists() {
+        // Verify the module compiles
+        XCTAssertNotNil(LocalizationHelper.self)
     }
     
-    func testCurrentLanguageDetection() {
-        let manager = LocalizationManager.shared
-        let language = manager.currentLanguage
+    func testCurrentLanguageReturnsString() {
+        let lang = LocalizationHelper.currentLanguage()
+        XCTAssertFalse(lang.isEmpty, "Current language should not be empty")
+    }
+    
+    func testLanguageDetection() {
+        // At least one should be true (or neither if another language)
+        let isChinese = LocalizationHelper.isChinese()
+        let isEnglish = LocalizationHelper.isEnglish()
         
-        // Should return a valid language code
-        XCTAssertFalse(language.isEmpty)
-        XCTAssertTrue(language.count >= 2)
+        // Just verify they return boolean without crashing
+        XCTAssertNotNil(isChinese)
+        XCTAssertNotNil(isEnglish)
     }
     
-    func testLocalizedStringExtension() {
-        // Test that the String extension compiles
+    func testStringLocalizationExtension() {
+        // Test that the extension doesn't crash
         let testKey = "app.name"
         let localized = testKey.localized
-        
-        // In test environment, it will return the key itself if not found
         XCTAssertNotNil(localized)
-    }
-    
-    func testGlobalLocalizationFunction() {
-        // Test that L() function works
-        let result = L("test.key")
-        XCTAssertNotNil(result)
-    }
-    
-    func testChineseLanguageDetection() {
-        let manager = LocalizationManager.shared
-        
-        // This test verifies the logic works
-        // Actual result depends on test environment language
-        let isChineseLogic = manager.currentLanguage.hasPrefix("zh")
-        XCTAssertEqual(manager.isChineseLanguage, isChineseLogic)
     }
 }

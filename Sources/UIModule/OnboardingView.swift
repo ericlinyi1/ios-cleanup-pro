@@ -1,5 +1,7 @@
 import SwiftUI
 
+/// Onboarding view with photo library permission request
+/// Updated for Issue #10: Multi-language Support
 struct OnboardingView: View {
     @State private var showingPermissionAlert = false
     
@@ -12,10 +14,10 @@ struct OnboardingView: View {
                 .foregroundColor(.blue)
             
             VStack(spacing: 15) {
-                Text(L("onboarding.title"))
+                Text("onboarding.title".localized)
                     .font(.system(size: 32, weight: .bold))
                 
-                Text(L("onboarding.permission.message"))
+                Text("onboarding.permission.message".localized)
                     .font(.subheadline)
                     .foregroundColor(.gray)
                     .multilineTextAlignment(.center)
@@ -27,7 +29,7 @@ struct OnboardingView: View {
             Button(action: {
                 showingPermissionAlert = true
             }) {
-                Text(L("onboarding.button.allow"))
+                Text("onboarding.button.allow".localized)
                     .font(.headline)
                     .foregroundColor(.white)
                     .frame(maxWidth: .infinity)
