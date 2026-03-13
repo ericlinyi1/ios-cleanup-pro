@@ -18,7 +18,8 @@ let package = Package(
         .target(
             name: "CoreLogic",
             dependencies: [],
-            path: "Sources/CoreLogic"
+            path: "Sources/CoreLogic",
+            resources: []
         ),
         .target(
             name: "AIModule",
