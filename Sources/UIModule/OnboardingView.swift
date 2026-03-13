@@ -14,10 +14,10 @@ struct OnboardingView: View {
                 .foregroundColor(.blue)
             
             VStack(spacing: 15) {
-                Text("onboarding.title".localized)
+                Text("onboarding.title".i18n)
                     .font(.system(size: 32, weight: .bold))
                 
-                Text("onboarding.permission.message".localized)
+                Text("onboarding.permission.message".i18n)
                     .font(.subheadline)
                     .foregroundColor(.gray)
                     .multilineTextAlignment(.center)
@@ -29,7 +29,7 @@ struct OnboardingView: View {
             Button(action: {
                 showingPermissionAlert = true
             }) {
-                Text("onboarding.button.allow".localized)
+                Text("onboarding.button.allow".i18n)
                     .font(.headline)
                     .foregroundColor(.white)
                     .frame(maxWidth: .infinity)

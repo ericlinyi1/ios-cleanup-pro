@@ -8,7 +8,7 @@ struct SwipeReviewView: View {
     
     var body: some View {
         VStack {
-            Text("review.title".localized)
+            Text("review.title".i18n)
                 .font(.largeTitle)
                 .fontWeight(.bold)
                 .padding()
@@ -37,17 +37,17 @@ struct SwipeReviewView: View {
             .padding()
             
             HStack(spacing: 40) {
-                Text("review.swipeLeft".localized)
+                Text("review.swipeLeft".i18n)
                     .foregroundColor(.red)
                     .font(.headline)
                 
-                Text("review.swipeRight".localized)
+                Text("review.swipeRight".i18n)
                     .foregroundColor(.green)
                     .font(.headline)
             }
             .padding()
             
-            Text("review.hint".localized)
+            Text("review.hint".i18n)
                 .font(.caption)
                 .foregroundColor(.gray)
                 .padding(.bottom)

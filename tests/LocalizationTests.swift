@@ -28,7 +28,7 @@ final class LocalizationTests: XCTestCase {
     func testStringLocalizationExtension() {
         // Test that the extension doesn't crash
         let testKey = "app.name"
-        let localized = testKey.localized
+        let localized = testKey.i18n
         XCTAssertNotNil(localized)
     }
 }

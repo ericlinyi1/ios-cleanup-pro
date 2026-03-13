@@ -30,7 +30,7 @@ let package = Package(
             dependencies: ["CoreLogic", "AIModule"],
             path: "Sources/UIModule",
             resources: [
-                .process("../Resources")
+                .process("../../Resources")
             ]
         ),
         .testTarget(

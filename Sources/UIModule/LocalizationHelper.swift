@@ -54,12 +54,12 @@ public struct LocalizationHelper {
 // MARK: - Convenient String Extension
 public extension String {
     /// Get localized version of this string (assuming it's a key)
-    var localized: String {
+    var i18n: String {
         return NSLocalizedString(self, comment: "")
     }
     
     /// Get localized version with formatted arguments
-    func localized(_ arguments: CVarArg...) -> String {
+    func i18n(_ arguments: CVarArg...) -> String {
         let format = NSLocalizedString(self, comment: "")
         return String(format: format, arguments: arguments)
     }
