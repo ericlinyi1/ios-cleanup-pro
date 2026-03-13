@@ -1,0 +1,78 @@
+/* iOS Cleanup Pro - English Localization */
+
+/* App Name & General */
+"app.name" = "iOS Cleanup Pro";
+"app.tagline" = "Smart Photo Organizer";
+
+/* Tab Bar */
+"tab.home" = "Home";
+"tab.stats" = "Stats";
+"tab.settings" = "Settings";
+
+/* Home Screen - Storage */
+"home.storage.title" = "Storage";
+"home.storage.used" = "Used %@ / Total %@";
+
+/* Home Screen - Features */
+"feature.duplicates.title" = "Duplicate Photos";
+"feature.duplicates.status" = "Completed ✅";
+"feature.duplicates.description" = "Found %d duplicate photos, can free up %@";
+
+"feature.similar.title" = "Similar Photos";
+"feature.similar.status" = "AI Powered ✅";
+"feature.similar.description" = "Smart detection of burst shots and similar scenes";
+
+"feature.screenshots.title" = "Screenshot Cleanup";
+"feature.screenshots.status" = "New Feature 🆕";
+"feature.screenshots.description" = "Auto-detect all screenshots, one-tap cleanup";
+
+"feature.albums.title" = "Album Management";
+"feature.albums.status" = "New Feature 🆕";
+"feature.albums.description" = "Create custom albums, batch move photos";
+
+"feature.video.title" = "Video Compression";
+"feature.video.status" = "New Feature 🆕";
+"feature.video.description" = "HEVC compression, save 50%+ space";
+
+/* Screenshot Cleanup */
+"screenshots.title" = "Screenshot Cleanup 📸";
+"screenshots.today" = "Today";
+"screenshots.yesterday" = "Yesterday";
+"screenshots.thisWeek" = "This Week";
+"screenshots.older" = "Older";
+"screenshots.count" = "%d screenshots";
+"screenshots.canFree" = "💡 Batch delete can free up %@";
+"button.delete" = "Delete";
+
+/* Video Compression */
+"video.title" = "Large Video Compression 🎥";
+"video.afterCompression" = "After compression: ~%@";
+"video.canSave" = "✨ HEVC compression can save %@";
+"button.compress" = "Compress";
+
+/* Onboarding */
+"onboarding.title" = "Welcome to iOS Cleanup Pro";
+"onboarding.permission.title" = "Photo Library Access";
+"onboarding.permission.message" = "We need access to your photo library to help you organize and clean up your photos.";
+"onboarding.button.allow" = "Allow Access";
+"onboarding.button.skip" = "Skip for Now";
+
+/* Swipe Review */
+"review.title" = "Review Photos";
+"review.swipeLeft" = "⬅️ DELETE";
+"review.swipeRight" = "KEEP ➡️";
+"review.hint" = "Swipe left to delete, right to keep";
+
+/* Alerts & Messages */
+"alert.deleteConfirm.title" = "Confirm Delete";
+"alert.deleteConfirm.message" = "Are you sure you want to delete %d items?";
+"alert.button.cancel" = "Cancel";
+"alert.button.confirm" = "Confirm";
+"alert.success" = "Success";
+"alert.error" = "Error";
+
+/* Settings */
+"settings.language.title" = "Language";
+"settings.language.auto" = "Auto (System)";
+"settings.language.english" = "English";
+"settings.language.chinese" = "简体中文";

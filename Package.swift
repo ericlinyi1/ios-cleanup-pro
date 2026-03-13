@@ -28,11 +28,14 @@ let package = Package(
         .target(
             name: "UIModule",
             dependencies: ["CoreLogic", "AIModule"],
-            path: "Sources/UIModule"
+            path: "Sources/UIModule",
+            resources: [
+                .process("../Resources")
+            ]
         ),
         .testTarget(
             name: "iOSCleanupProTests",
-            dependencies: ["CoreLogic", "AIModule"],
+            dependencies: ["CoreLogic", "AIModule", "UIModule"],
             path: "tests"
         )
     ]

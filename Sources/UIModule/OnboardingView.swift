@@ -12,10 +12,10 @@ struct OnboardingView: View {
                 .foregroundColor(.blue)
             
             VStack(spacing: 15) {
-                Text("Scan & Cleanup")
+                Text(L("onboarding.title"))
                     .font(.system(size: 32, weight: .bold))
                 
-                Text("Save GBs of space by intelligently removing duplicate photos and large videos.")
+                Text(L("onboarding.permission.message"))
                     .font(.subheadline)
                     .foregroundColor(.gray)
                     .multilineTextAlignment(.center)
@@ -27,7 +27,7 @@ struct OnboardingView: View {
             Button(action: {
                 showingPermissionAlert = true
             }) {
-                Text("Get Started")
+                Text(L("onboarding.button.allow"))
                     .font(.headline)
                     .foregroundColor(.white)
                     .frame(maxWidth: .infinity)

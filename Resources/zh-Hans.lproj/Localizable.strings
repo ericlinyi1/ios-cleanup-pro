@@ -1,0 +1,78 @@
+/* iOS Cleanup Pro - 简体中文本地化 */
+
+/* 应用名称和常规 */
+"app.name" = "iOS Cleanup Pro";
+"app.tagline" = "智能照片整理助手";
+
+/* 标签栏 */
+"tab.home" = "首页";
+"tab.stats" = "统计";
+"tab.settings" = "设置";
+
+/* 首页 - 存储空间 */
+"home.storage.title" = "存储空间";
+"home.storage.used" = "已使用 %@ / 共 %@";
+
+/* 首页 - 功能模块 */
+"feature.duplicates.title" = "重复照片检测";
+"feature.duplicates.status" = "已完成 ✅";
+"feature.duplicates.description" = "发现%d张重复照片，可释放 %@";
+
+"feature.similar.title" = "相似照片聚类";
+"feature.similar.status" = "AI驱动 ✅";
+"feature.similar.description" = "智能识别连拍和相似场景";
+
+"feature.screenshots.title" = "截图清理";
+"feature.screenshots.status" = "新功能 🆕";
+"feature.screenshots.description" = "自动识别所有截图，一键清理";
+
+"feature.albums.title" = "相册管理";
+"feature.albums.status" = "新功能 🆕";
+"feature.albums.description" = "创建自定义相册，批量移动照片";
+
+"feature.video.title" = "视频压缩";
+"feature.video.status" = "新功能 🆕";
+"feature.video.description" = "HEVC压缩，节省50%+空间";
+
+/* 截图清理 */
+"screenshots.title" = "截图清理 📸";
+"screenshots.today" = "今天";
+"screenshots.yesterday" = "昨天";
+"screenshots.thisWeek" = "本周";
+"screenshots.older" = "更早";
+"screenshots.count" = "%d张截图";
+"screenshots.canFree" = "💡 批量删除可释放 %@";
+"button.delete" = "删除";
+
+/* 视频压缩 */
+"video.title" = "大视频压缩 🎥";
+"video.afterCompression" = "压缩后: ~%@";
+"video.canSave" = "✨ HEVC压缩可节省 %@";
+"button.compress" = "压缩";
+
+/* 引导页 */
+"onboarding.title" = "欢迎使用 iOS Cleanup Pro";
+"onboarding.permission.title" = "照片库访问权限";
+"onboarding.permission.message" = "我们需要访问您的照片库，以帮助您整理和清理照片。";
+"onboarding.button.allow" = "允许访问";
+"onboarding.button.skip" = "稍后再说";
+
+/* 滑动审查 */
+"review.title" = "审查照片";
+"review.swipeLeft" = "⬅️ 删除";
+"review.swipeRight" = "保留 ➡️";
+"review.hint" = "向左滑动删除，向右滑动保留";
+
+/* 提示和消息 */
+"alert.deleteConfirm.title" = "确认删除";
+"alert.deleteConfirm.message" = "确定要删除 %d 项内容吗？";
+"alert.button.cancel" = "取消";
+"alert.button.confirm" = "确认";
+"alert.success" = "成功";
+"alert.error" = "错误";
+
+/* 设置 */
+"settings.language.title" = "语言";
+"settings.language.auto" = "自动（跟随系统）";
+"settings.language.english" = "English";
+"settings.language.chinese" = "简体中文";
