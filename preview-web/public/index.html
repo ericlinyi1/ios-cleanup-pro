@@ -72,6 +72,14 @@
             font-weight: bold;
             z-index: 100;
         }
+        .tab-nav-sticky {
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding-top: 8px;
+            padding-bottom: 16px;
+        }
     </style>
 </head>
 <body class="bg-gray-900 flex items-center justify-center min-h-screen p-8">
@@ -96,7 +104,7 @@
             </div>
             
             <!-- Tab Navigation -->
-            <div class="flex space-x-2 px-6 pb-4">
+            <div class="tab-nav-sticky flex space-x-2 px-6">
                 <button class="tab-active px-4 py-2 rounded-full text-sm" onclick="showTab('home')" data-i18n="tab.home">首页</button>
                 <button class="px-4 py-2 rounded-full text-sm text-white" onclick="showTab('screenshots')" data-i18n="tab.screenshots">截图</button>
                 <button class="px-4 py-2 rounded-full text-sm text-white" onclick="showTab('videos')" data-i18n="tab.videos">视频</button>
