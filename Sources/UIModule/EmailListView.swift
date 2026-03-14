@@ -17,7 +17,7 @@ public struct EmailListView: View {
                     TextField("search.placeholder".i18n, text: $searchText)
                 }
                 .padding(10)
-                .background(Color(.systemGray6))
+                .background(Color.gray.opacity(0.1))
                 .cornerRadius(10)
                 .padding()
                 
