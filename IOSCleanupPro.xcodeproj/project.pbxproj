@@ -1,0 +1,169 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* BEGIN PBXBuildFile */
+		1BE22D300000000000000001 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BE22D300000000000000002 ; };
+		5471DC200000000000000001 /* SwipeReviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5471DC200000000000000002 ; };
+/* END PBXBuildFile */
+
+/* BEGIN PBXFileReference */
+		1BE22D300000000000000002 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sources/UIModule/OnboardingView.swift; sourceTree = "<group>"; };
+		5471DC200000000000000002 /* SwipeReviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sources/UIModule/SwipeReviewView.swift; sourceTree = "<group>"; };
+/* END PBXFileReference */
+
+/* BEGIN PBXFrameworksBuildPhase */
+		DAVE0001 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* END PBXFrameworksBuildPhase */
+
+/* BEGIN PBXGroup */
+		DAVE0002 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				1BE22D300000000000000002 /* OnboardingView.swift */,
+				5471DC200000000000000002 /* SwipeReviewView.swift */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		DAVE0003 /* CustomTemplate */ = {
+			isa = PBXGroup;
+			children = (
+				DAVE0002 /* Sources */,
+			);
+			sourceTree = "<group>";
+		};
+/* END PBXGroup */
+
+/* BEGIN PBXNativeTarget */
+		DAVE0004 /* IOSCleanupPro */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DAVE0005 /* Build configuration list for PBXNativeTarget "IOSCleanupPro" */;
+			buildPhases = (
+				DAVE0006 /* Sources */,
+				DAVE0001 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = IOSCleanupPro;
+			productName = IOSCleanupPro;
+			productReference = DAVE0007 /* IOSCleanupPro.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* END PBXNativeTarget */
+
+/* BEGIN PBXProject */
+		DAVE0008 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1500;
+				LastUpgradeCheck = 1500;
+			};
+			buildConfigurationList = DAVE0009 /* Build configuration list for PBXProject "IOSCleanupPro" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = DAVE0003 /* CustomTemplate */;
+			productRefGroup = DAVE0003 /* CustomTemplate */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				DAVE0004 /* IOSCleanupPro */,
+			);
+		};
+/* END PBXProject */
+
+/* BEGIN PBXSourcesBuildPhase */
+		DAVE0006 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1BE22D300000000000000001 /* OnboardingView.swift in Sources */,
+				5471DC200000000000000001 /* SwipeReviewView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* END PBXSourcesBuildPhase */
+
+/* BEGIN XCBuildConfiguration */
+		DAVE0010 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = ai.openclaw.ios-cleanup-pro;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		DAVE0011 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = ai.openclaw.ios-cleanup-pro;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* END XCBuildConfiguration */
+
+/* BEGIN XCConfigurationList */
+		DAVE0005 /* Build configuration list for PBXNativeTarget "IOSCleanupPro" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DAVE0010 /* Debug */,
+				DAVE0011 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		DAVE0009 /* Build configuration list for PBXProject "IOSCleanupPro" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DAVE0010 /* Debug */,
+				DAVE0011 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* END XCConfigurationList */
+	};
+	rootObject = DAVE0008 /* Project object */;
+}
