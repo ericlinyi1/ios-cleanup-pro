@@ -9,11 +9,13 @@
 /* BEGIN PBXBuildFile */
 		1BE22D300000000000000001 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BE22D300000000000000002 ; };
 		5471DC200000000000000001 /* SwipeReviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5471DC200000000000000002 ; };
+		FE7DCF900000000000000001 /* IOSCleanupProApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE7DCF900000000000000002 ; };
 /* END PBXBuildFile */
 
 /* BEGIN PBXFileReference */
-		1BE22D300000000000000002 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sources/UIModule/OnboardingView.swift; sourceTree = "<group>"; };
-		5471DC200000000000000002 /* SwipeReviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sources/UIModule/SwipeReviewView.swift; sourceTree = "<group>"; };
+		1BE22D300000000000000002 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = OnboardingView.swift; path = UIModule/OnboardingView.swift; sourceTree = "<group>"; };
+		5471DC200000000000000002 /* SwipeReviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SwipeReviewView.swift; path = UIModule/SwipeReviewView.swift; sourceTree = "<group>"; };
+		FE7DCF900000000000000002 /* IOSCleanupProApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = IOSCleanupProApp.swift; path = IOSCleanupProApp.swift; sourceTree = "<group>"; };
 /* END PBXFileReference */
 
 /* BEGIN PBXFrameworksBuildPhase */
@@ -30,13 +32,22 @@
 		DAVE0002 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
-				1BE22D300000000000000002 /* OnboardingView.swift */,
-				5471DC200000000000000002 /* SwipeReviewView.swift */,
+				FE7DCF900000000000000002 /* IOSCleanupProApp.swift */,
+				DAVE0003 /* UIModule */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
 		};
-		DAVE0003 /* CustomTemplate */ = {
+		DAVE0003 /* UIModule */ = {
+			isa = PBXGroup;
+			children = (
+				1BE22D300000000000000002 /* OnboardingView.swift */,
+				5471DC200000000000000002 /* SwipeReviewView.swift */,
+			);
+			path = UIModule;
+			sourceTree = "<group>";
+		};
+		DAVE0012 /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
 				DAVE0002 /* Sources */,
@@ -79,8 +90,8 @@
 				en,
 				Base,
 			);
-			mainGroup = DAVE0003 /* CustomTemplate */;
-			productRefGroup = DAVE0003 /* CustomTemplate */;
+			mainGroup = DAVE0012 /* CustomTemplate */;
+			productRefGroup = DAVE0012 /* CustomTemplate */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
@@ -96,6 +107,7 @@
 			files = (
 				1BE22D300000000000000001 /* OnboardingView.swift in Sources */,
 				5471DC200000000000000001 /* SwipeReviewView.swift in Sources */,
+				FE7DCF900000000000000001 /* IOSCleanupProApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
