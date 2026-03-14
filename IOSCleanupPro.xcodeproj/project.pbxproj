@@ -10,12 +10,16 @@
 		1BE22D300000000000000001 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BE22D300000000000000002 ; };
 		5471DC200000000000000001 /* SwipeReviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5471DC200000000000000002 ; };
 		FE7DCF900000000000000001 /* IOSCleanupProApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE7DCF900000000000000002 ; };
+		DAVE10010000000000000001 /* LocalizationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAVE10010000000000000002 ; };
+		DAVE10020000000000000001 /* LocalizationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAVE10020000000000000002 ; };
 /* END PBXBuildFile */
 
 /* BEGIN PBXFileReference */
 		1BE22D300000000000000002 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = OnboardingView.swift; path = Sources/UIModule/OnboardingView.swift; sourceTree = SOURCE_ROOT; };
 		5471DC200000000000000002 /* SwipeReviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SwipeReviewView.swift; path = Sources/UIModule/SwipeReviewView.swift; sourceTree = SOURCE_ROOT; };
 		FE7DCF900000000000000002 /* IOSCleanupProApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = IOSCleanupProApp.swift; path = Sources/IOSCleanupProApp.swift; sourceTree = SOURCE_ROOT; };
+		DAVE10010000000000000002 /* LocalizationHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LocalizationHelper.swift; path = Sources/UIModule/LocalizationHelper.swift; sourceTree = SOURCE_ROOT; };
+		DAVE10020000000000000002 /* LocalizationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LocalizationManager.swift; path = Sources/UIModule/LocalizationManager.swift; sourceTree = SOURCE_ROOT; };
 /* END PBXFileReference */
 
 /* BEGIN PBXFrameworksBuildPhase */
@@ -43,6 +47,8 @@
 			children = (
 				1BE22D300000000000000002 /* OnboardingView.swift */,
 				5471DC200000000000000002 /* SwipeReviewView.swift */,
+				DAVE10010000000000000002 /* LocalizationHelper.swift */,
+				DAVE10020000000000000002 /* LocalizationManager.swift */,
 			);
 			name = UIModule;
 			sourceTree = "<group>";
@@ -108,6 +114,8 @@
 				1BE22D300000000000000001 /* OnboardingView.swift in Sources */,
 				5471DC200000000000000001 /* SwipeReviewView.swift in Sources */,
 				FE7DCF900000000000000001 /* IOSCleanupProApp.swift in Sources */,
+				DAVE10010000000000000001 /* LocalizationHelper.swift in Sources */,
+				DAVE10020000000000000001 /* LocalizationManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
